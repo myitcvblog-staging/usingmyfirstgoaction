@@ -1,0 +1,16 @@
+on: [push, pull_request]
+name: Test
+jobs:
+  test:
+    strategy:
+      matrix:
+        platform: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - uses: actions/setup-go@9fbc767707c286e568c92927bbf57d76b73e0892
+      with:
+        go-version: '1.14.x'
+    - name: Display a greeting
+      uses: myitcvblog-staging/myfirstgoaction@af472be5fc77dbc6d7c3a9708ac86142ea3e8356
+      with:
+        name: Helena
